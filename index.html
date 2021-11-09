@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--
+        Creado por: Javier Eduardo Arevalo Cardenas.
+        Email: javieduard02a@gmail.com
+        Email MinTic: javier.arevalo.mt@correo.usa.edu.co
+    -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Reto Cuatro</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.png" />
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+</head>
+<style>
+    body{
+        margin: 0px;
+        font-family: 'Muli', sans-serif;
+        align-content: flex-start;
+        background: linear-gradient(#4cc0dd,#3295ce)
+    }
+    table, td, th {
+  border: 3px solid white;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+</style>
+<body>
+    <header class="header">
+        <h1 class="title text-center">CHALLENGE FOUR</h1>
+    </header>
+    <section class="page-section">
+        <div class="container-fluid">
+            <div class="row mb-3">
+            <div class="col d-none d-sm-none d-md-block">
+                
+            </div>
+            <div class="col">
+                    <div id="clients" class="center" style="display: none;">
+                        <div class="tables__container">
+                            <div>
+                                <h2 style="display: contents;">CLIENTS</h2>
+                                <button style="display: none;" onclick="createClient()" class="Createbutton" id="buttonAddClient">Add new client</button>
+                            </div>
+                            <div id="tableClients"></div>
+                            <div id="editFormClient" style="display: none;">
+                                <div>
+                                    <h2>Edit client values</h2>
+                                </div>
+                                <div>
+                                    <form class="login__form" id = "formEdit">
+                                        <input type="text" id="nameClient" class="inputEdit" placeholder="Name">
+                                        <input type="text" id="emailClient" class="inputEdit" placeholder="Email">
+                                        <input type="number" id="ageClient" class="inputEdit" placeholder="Age">
+                                        <button class="Editbutton" type="submit">Edit</button> 
+                                    </form>
+                                     
+                                </div> 
+                            </div>
+                            <div id="createFormClient" style="display: none;">
+                                <div>
+                                    <h2>Create a new client</h2>
+                                </div>
+                                <div>
+                                    <form class="login__form" id = "formCreate">
+                                        <input type="text" id="newNameClient" class="inputEdit" placeholder="Name">
+                                        <input type="text" id="newEmailClient" class="inputEdit" placeholder="Email">
+                                        <input type="number" id="newAgeClient" class="inputEdit" placeholder="Age">
+                                        <input type="password" id="newPassClient" class="inputEdit" placeholder="Password">
+                                        <button class="Editbutton" type="submit">Create</button> 
+                                    </form>
+                                </div> 
+                            </div>
+                            <div>
+                                <button onclick="returnMenu()" class="button" type="submit">RETURN</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="administrator" class="center" style="display: none;">
+                        <div class="tables__container">
+                            <div>
+                                <h2 style="display: contents;">ADMINISTRATORS</h2>
+                                <button style="display: none;" onclick="createAdministrator()" class="Createbutton" id="buttonAddAdministrator">Add new admin</button>
+                            </div>
+                            <div id="tableAdministrator"></div>
+                            
+                            <div id="createFormAdmin" style="display: none;">
+                                <div>
+                                    <h2>Create a new administrator</h2>
+                                </div>
+                                <div>
+                                    <form class="login__form" id = "formCreateAdministrator">
+                                        <input type="text" id="newNameAdmin" class="inputEdit" placeholder="Name">
+                                        <input type="text" id="newEmailAdmin" class="inputEdit" placeholder="Email">
+                                        <input type="password" id="newPassAdmin" class="inputEdit" placeholder="Password">
+                                        <button class="Editbutton" type="submit">Create</button>
+                                    </form>
+                                </div> 
+                            </div>
+                            <div>
+                                <button onclick="returnMenu()" class="button" type="submit">RETURN</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="doctors" class="center" style="display: none;">
+                        <div class="tables__container">
+                            <div>
+                                <h2 style="display: contents;">DOCTORS</h2>
+                                <button style="display: none;" onclick="createDoctor()" class="Createbutton" id="buttonAddDoctor">Add new doctor</button>
+                            </div>
+                            <div id="tableDoctors"></div>
+                            <div id="editFormDoctor" style="display: none;">
+                                <div>
+                                    <h2>Edit doctor values</h2>
+                                </div>
+                                <div>
+                                    <form class="login__form" id = "formEditDoctor">
+                                        <input type="text" id="nameDoctor" class="inputEdit" placeholder="Name">
+                                        <input type="number" id="specialtyDoctor" class="inputEdit" placeholder="Specialty">
+                                        <input type="number" id="graduateDoctor" class="inputEdit" placeholder="Year">
+                                        <input type="text" id="departmentDoctor" class="inputEdit" placeholder="Department">
+                                        <input type="text" id="descriptionDoctor" class="inputEdit" placeholder="Description">
+                                        <button class="Editbutton" type="submit">Edit</button> 
+                                    </form>
+                                     
+                                </div> 
+                            </div>
+                            <div id="createFormDoctor" style="display: none;">
+                                <div>
+                                    <h2>Create a new doctor</h2>
+                                </div>
+                                <div>
+                                    <form class="login__form" id = "formCreateDoctor">
+                                        
+                                        <input type="text" id="newNameDoctor" class="inputEdit" placeholder="Name">
+                                        <input type="number" id="newSpecialtyDoctor" class="inputEdit" placeholder="Specialty">
+                                        <input type="number" id="newGraduateDoctor" class="inputEdit" placeholder="Year">
+                                        <input type="text" id="newDepartmentDoctor" class="inputEdit" placeholder="Department">
+                                        <input type="text" id="newDescription" class="inputEdit" placeholder="Description">
+                                        <button class="Editbutton" type="submit">Create</button> 
+                                    </form>
+                                </div> 
+                            </div>
+
+                            <div>
+                                <button onclick="returnMenu()" class="button" type="submit">RETURN</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="scores" class="center" style="display: none;">
+                        <div class="tables__container">
+                            <div>
+                                <h2 style="display: contents;">SCORES</h2>
+                                <button style="display: none;" onclick="createScore()" class="Createbutton" id="buttonAddScore">Add new score</button>
+                            </div>
+                            <div id="tableScore"></div>
+                            
+                            <div id="createFormScore" style="display: none;">
+                                <div>
+                                    <h2>Create a new score</h2>
+                                </div>
+                                <div>
+                                    <form class="login__form" id = "formCreateScore">
+                                        
+                                        <input type="number" id="newNameScore" class="inputEdit" placeholder="Score">
+                                        <input type="text" id="newCommentScore" class="inputEdit" placeholder="Comment">
+                                        <input type="number" id="newReservationScore" class="inputEdit" placeholder="id reservation">
+                                        <button class="Editbutton" type="submit">Create</button> 
+                                    </form>
+                                </div> 
+                            </div>
+
+                            <div>
+                                <button onclick="returnMenu()" class="button" type="submit">RETURN</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="messages" class="center" style="display: none;">    
+                        <div class="tables__container">
+                            <div>
+                                <h2 style="display: contents;">MESSAGES</h2>
+                                <button style="display: none;" onclick="createMessage()" class="Createbutton" id="buttonAddMessage">Add new message</button>
+                            </div>
+                            <div id="tableMessage"></div>
+                            <div id="editFormMessage" style="display: none;">
+                                <div>
+                                    <h2>Edit message</h2>
+                                </div>
+                                <div>
+                                    <form class="login__form" id = "formEditMessage">
+                                        <input type="text" id="message" class="inputCreateMessage" placeholder="Message">
+                                        <input type="number" id="idDoctor" class="inputCreateIdMessage" placeholder="Id doctor">
+                                        <input type="number" id="idClient" class="inputCreateIdMessage" placeholder="Id client">
+                                        <button class="Editbutton" type="submit">Edit</button> 
+                                    </form>
+                                     
+                                </div> 
+                            </div>
+                            <div id="createFormMessage" style="display: none;">
+                                <div>
+                                    <h2>Create a new message</h2>
+                                </div>
+                                <div>
+                                    <form class="login__form" id = "formCreateMessage">
+                                        <input type="text" id="newMessage" class="inputCreateMessage" placeholder="Message">
+                                        <input type="number" id="newIdMessageDoctor" class="inputCreateIdMessage" placeholder="Id Doctor">
+                                        <input type="number" id="newIdMessageClient" class="inputCreateIdMessage" placeholder="Id Client">
+                                        <button class="Editbutton" type="submit">Create</button> 
+                                    </form>
+                                </div> 
+                            </div>
+                            <div>
+                                <button onclick="returnMenu()" class="button" type="submit">RETURN</button>
+                            </div>
+                        </div>   
+                    </div>    
+                    <div id="specialties" class="center" style="display: none;">
+                        <div class="tables__container">
+                            <div>
+                                <h2 style="display: contents;">SPECIALTIES</h2>
+                                <button style="display: none;" onclick="createSpecialty()" class="Createbutton" id="buttonAddSpecialty">Add new specielty</button>
+                            </div>
+                            <div id="tableSpecialty"></div>
+                            <div id="createFormSpecialty" style="display: none;">
+                                <div>
+                                    <h2>Create a new specialty</h2>
+                                </div>
+                                <div>
+                                    <form class="login__form" id = "formCreateSpecialty">
+                                        
+                                        <input type="text" id="newNameSpecialty" class="inputEdit" placeholder="Name">
+                                        <input type="text" id="newDescriptionSpecialty" class="inputEdit" placeholder="Description">
+                                        <button class="Editbutton" type="submit">Create</button>
+                                    </form>
+                                </div> 
+                            </div>
+
+                            <div>
+                                <button onclick="returnMenu()" class="button" type="submit">RETURN</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="reservations" class="center" style="display: none;">
+                        <div class="tables__container">
+                            <div>
+                                <h2 style="display: contents;">RESERVATIONS</h2>
+                                <button style="display: none;" onclick="createReservation()" class="Createbutton" id="buttonAddReservation">Add new reservation</button>
+                            </div>
+                            <div id="tableReservation"></div>
+                            
+                            <div id="createFormReservation" style="display: none;">
+                                <div>
+                                    <h2>Create a new reservation</h2>
+                                </div>
+                                <div>
+                                    <form class="login__form" id = "formCreateReservation">
+                                        
+                                        <input type="date" id="newStartReservation" class="inputEdit" placeholder="Start date">
+                                        <input type="date" id="newDevolutionReservation" class="inputEdit" placeholder="Devolution date">
+                                        <input type="number" id="newDoctorReservation" class="inputEdit" placeholder="Id doctor">
+                                        <input type="number" id="newClientReservation" class="inputEdit" placeholder="Id client">
+                                        <button class="Editbutton" type="submit">Create</button> 
+                                    </form>
+                                </div> 
+                            </div>
+
+                            <div>
+                                <button onclick="returnMenu()" class="button" type="submit">RETURN</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                <div class="center" id="menu" style="display: block;">
+                    <div class="menu__container ">
+                        <h2>Chose one table to work:</h2>
+                        <div>
+                            <button onclick="clientsCRUD()" class="button" type="submit">CLIENTS</button> 
+                        </div>
+                        <div>
+                            <button onclick="doctorCRUD()" class="button" type="submit">DOCTORS</button> 
+                        </div>
+                        <div>
+                            <button onclick="messageCRUD()" class="button" type="submit">MESSAGES</button> 
+                        </div>
+                        <div>
+                            <button onclick="reservationCRUD()" class="button" type="submit">RESERVATIONS</button> 
+                        </div>
+                        <div>
+                            <button onclick="specialtyCRUD()" class="button" type="submit">SPECIALTIES</button> 
+                        </div>
+                        <div>
+                            <button onclick="administratorCRUD()" class="button" type="submit">ADMINISTRATORS</button> 
+                        </div>
+                        <!--<div>
+                            <button onclick="scoreCRUD()" class="button" type="submit">SCORES</button> 
+                        </div>-->
+                    </div>
+                </div>
+            </div>
+            <div class="col d-none d-sm-none d-md-block">
+                
+            </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="copyright py-4 text-center container-fluid">
+            <small>Copyright &copy; Grupo 3 MinTic 2021-2022</small></div>
+    </footer>
+    <script src="js/main.js"></script>
+</body>
+</html>
