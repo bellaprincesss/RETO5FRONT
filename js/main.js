@@ -1,8 +1,3 @@
-/*
-    Creado por Javier Eduardo Arevalo Cardenas
-    Email: javieduard02a@gmail.com
-    Email MinTic: javier.arevalo.mt@correo.usa.edu.co
-*/ 
 
 var clients = document.getElementById("clients")
 var doctors = document.getElementById("doctors")
